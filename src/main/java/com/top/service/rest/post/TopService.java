@@ -49,7 +49,7 @@ import com.top.service.rest.verifyToken.VerifyToken;
 
 import io.jsonwebtoken.Claims;
 
-@Path("/top")
+@Path("/rest")
 public class TopService {
 
 	private static final Logger logger = LogManager.getLogger(TopService.class);

@@ -2,19 +2,19 @@
 <!DOCTYPE xml>
 <configuration status="WARN">
 	<appenders>
-		<Console name="top-console" target="SYSTEM_OUT">
+		<Console name="juse-add-console" target="SYSTEM_OUT">
 			<PatternLayout
 				pattern="%d{DEFAULT} [%t] %-5level %X{session-id} %X{consumer-message-id} [%C::%M::%L] --- %msg%n" />
 		</Console>
-		<File name="top-service" fileName="${env:TOP_SVC_LOG_FILE_PATH}">
+		<File name="juse-add-service" fileName="${env:JUSE_ADD_LOG_FILE_PATH}">
 			<PatternLayout
 				pattern="%d{DEFAULT} [%t] %-5level %X{session-id} %X{consumer-message-id} [%C::%M::%L] --- %msg%n" />
 		</File>
 	</appenders>
 	<loggers>
 		<root level="INFO">
-			<appender-ref ref="top-service" />
-			<appender-ref ref="top-console" />
+			<appender-ref ref="juse-add-service" />
+			<appender-ref ref="juse-add-console" />
 		</root>
 	</loggers>
 </configuration>
