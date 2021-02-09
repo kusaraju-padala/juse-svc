@@ -3,6 +3,7 @@ package com.jusenews.service.application;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
 import org.jboss.resteasy.plugins.interceptors.CorsFilter;
@@ -13,6 +14,7 @@ import com.jusenews.service.rest.post.test.TestService;
 import com.jusenews.service.rest.user.TopUserActivity;
 import com.jusenews.service.rest.verifyToken.VerifyTokenFilter;
 
+@ApplicationPath("/")
 public class TopApplication extends Application {
 	
 	private Set<Object> singletons = new HashSet<Object>();
