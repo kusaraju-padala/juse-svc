@@ -1,0 +1,74 @@
+{
+  "interests": [
+    {
+      "category": "worldnews",
+      "displayName": "World News",
+      "isDropdown": false,
+      "backgroundURL": "https://storage.googleapis.com/thoughtsofpeople-com-post/t15967988573394HV65100000.jpg"
+    },
+    {
+      "category": "nationalpolitics",
+      "displayName": "National Politics",
+      "isDropdown": false,
+      "backgroundURL": "https://storage.googleapis.com/thoughtsofpeople-com-post/t15968564454457v1i0100000.jpg"
+    },
+    {
+      "category": "cricket",
+      "displayName": "Cricket",
+      "isDropdown": false,
+      "backgroundURL": "https://storage.googleapis.com/thoughtsofpeople-com-post/t1596857831369AH4je100000.jpg"
+    },
+    {
+      "category": "statepolitics",
+      "displayName": "State Politics",
+      "isDropdown": true,
+      "backgroundURL": "https://storage.googleapis.com/thoughtsofpeople-com-post/t1596858045466cKV36100000.jpg",
+      "subCategory": [
+        {
+          "category": "andhra",
+          "displayName": "Andhra Pradesh",
+          "isDropdown": false,
+          "backgroundURL": "https://storage.googleapis.com/thoughtsofpeople-com-post/t1596858082272K70yv100000.jpg"
+        },
+        {
+          "category": "telangana",
+          "displayName": "Telangana",
+          "isDropdown": false,
+          "backgroundURL": "https://storage.googleapis.com/thoughtsofpeople-com-post/t1596858119808Czj0f100000.jpg"
+        }
+      ]
+    },
+    {
+      "category": "sports",
+      "displayName": "Sports",
+      "isDropdown": true,
+      "backgroundURL": "https://storage.googleapis.com/thoughtsofpeople-com-post/t159685815721417Gom100000.jpg",
+      "subCategory": [
+        {
+          "category": "badminton",
+          "displayName": "Badminton",
+          "isDropdown": false,
+          "backgroundURL": "https://storage.googleapis.com/thoughtsofpeople-com-post/t1596858184242kRWFd100000.jpg"
+        },
+        {
+          "category": "football",
+          "displayName": "Football",
+          "isDropdown": false,
+          "backgroundURL": "https://storage.googleapis.com/thoughtsofpeople-com-post/t1596858211988JvsFH100000.jpg"
+        },
+        {
+          "category": "hockey",
+          "displayName": "Hockey",
+          "isDropdown": false,
+          "backgroundURL": "https://storage.googleapis.com/thoughtsofpeople-com-post/t1596858246238CFqnU100000.jpg"
+        },
+        {
+          "category": "tennis",
+          "displayName": "Tennis",
+          "isDropdown": false,
+          "backgroundURL": "https://storage.googleapis.com/thoughtsofpeople-com-post/t15968582752020EWS1100000.jpg"
+        }
+      ]
+    }
+  ]
+}
