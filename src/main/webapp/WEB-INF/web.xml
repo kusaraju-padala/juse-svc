@@ -5,11 +5,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
 	http://java.sun.com/xml/ns/j2ee/webapp_3_0.xsd">
-	<display-name>Top</display-name>
+	<display-name>Juse</display-name>
 	<!-- <context-param> <param-name>resteasy.servlet.mapping.prefix</param-name> 
 		<param-value>/rest</param-value> </context-param> -->
 		
-	<servlet>
+	<!-- <servlet>
 		<servlet-name>resteasy-servlet</servlet-name>
 		<servlet-class>
 			org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher
@@ -22,6 +22,6 @@
 	<servlet-mapping>
 		<servlet-name>resteasy-servlet</servlet-name>
 		<url-pattern>/*</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping> -->
 
 </web-app>
