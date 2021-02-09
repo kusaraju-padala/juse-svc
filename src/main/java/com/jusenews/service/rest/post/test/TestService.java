@@ -1,4 +1,4 @@
-package com.top.service.rest.post.test;
+package com.jusenews.service.rest.post.test;
 
 import java.io.InputStream;
 import java.util.List;

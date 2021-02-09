@@ -1,4 +1,4 @@
-package com.top.service.rest.verifyToken;
+package com.jusenews.service.rest.verifyToken;
 
 import static java.lang.annotation.ElementType.*;
 import java.lang.annotation.Retention;

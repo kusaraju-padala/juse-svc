@@ -21,22 +21,8 @@
 		</servlet-class>
 		<init-param>
 			<param-name>javax.ws.rs.Application</param-name>
-			<param-value>com.top.service.application.TopApplication</param-value>
+			<param-value>com.jusenews.service.application.TopApplication</param-value>
 		</init-param>
-		<multipart-config>
-			<!-- 52MB max -->
-			<max-file-size>52428800</max-file-size>
-			<max-request-size>52428800</max-request-size>
-			<file-size-threshold>0</file-size-threshold>
-		</multipart-config>
 	</servlet>
-
-
-
-
-	<servlet-mapping>
-		<servlet-name>resteasy-servlet</servlet-name>
-		<url-pattern>/*</url-pattern>
-	</servlet-mapping>
 
 </web-app>

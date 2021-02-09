@@ -1,4 +1,4 @@
-package com.top.service.rest.user;
+package com.jusenews.service.rest.user;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -9,9 +9,9 @@ import javax.ws.rs.core.Response;
 
 import org.jboss.resteasy.spi.ResteasyProviderFactory;
 
+import com.jusenews.service.rest.verifyToken.VerifyToken;
 import com.top.lib.beans.generic.InsertResponseBean;
 import com.top.lib.post.user.UserActivity;
-import com.top.service.rest.verifyToken.VerifyToken;
 
 import io.jsonwebtoken.Claims;
 

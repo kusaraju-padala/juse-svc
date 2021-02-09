@@ -1,4 +1,4 @@
-package com.top.service.rest.login;
+package com.jusenews.service.rest.login;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -21,6 +21,7 @@ import org.apache.logging.log4j.Logger;
 import org.jboss.resteasy.spi.ResteasyProviderFactory;
 
 import com.google.gson.Gson;
+import com.jusenews.service.rest.verifyToken.VerifyToken;
 import com.top.lib.beans.generic.InsertResponseBean;
 import com.top.lib.beans.user.CheckUserBean;
 import com.top.lib.beans.user.InputInterestsBean;
@@ -29,7 +30,6 @@ import com.top.lib.beans.user.UserUnameBean;
 import com.top.lib.post.user.AddInterests;
 import com.top.lib.post.user.AddUser;
 import com.top.lib.post.user.CheckUser;
-import com.top.service.rest.verifyToken.VerifyToken;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

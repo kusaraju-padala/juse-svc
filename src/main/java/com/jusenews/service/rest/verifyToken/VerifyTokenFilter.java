@@ -1,4 +1,4 @@
-package com.top.service.rest.verifyToken;
+package com.jusenews.service.rest.verifyToken;
 
 import java.io.IOException;
 import java.security.Key;

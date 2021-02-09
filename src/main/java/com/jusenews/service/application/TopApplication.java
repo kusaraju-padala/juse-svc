@@ -1,4 +1,4 @@
-package com.top.service.application;
+package com.jusenews.service.application;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -7,11 +7,11 @@ import javax.ws.rs.core.Application;
 
 import org.jboss.resteasy.plugins.interceptors.CorsFilter;
 
-import com.top.service.rest.login.TopLoginService;
-import com.top.service.rest.post.TopService;
-import com.top.service.rest.post.test.TestService;
-import com.top.service.rest.user.TopUserActivity;
-import com.top.service.rest.verifyToken.VerifyTokenFilter;
+import com.jusenews.service.rest.login.TopLoginService;
+import com.jusenews.service.rest.post.TopService;
+import com.jusenews.service.rest.post.test.TestService;
+import com.jusenews.service.rest.user.TopUserActivity;
+import com.jusenews.service.rest.verifyToken.VerifyTokenFilter;
 
 public class TopApplication extends Application {
 	

@@ -1,4 +1,4 @@
-package com.top.service.rest.post;
+package com.jusenews.service.rest.post;
 
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
@@ -27,6 +27,7 @@ import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 import org.jboss.resteasy.spi.ResteasyProviderFactory;
 
 import com.google.gson.Gson;
+import com.jusenews.service.rest.verifyToken.VerifyToken;
 import com.top.lib.beans.generic.InsertResponseBean;
 import com.top.lib.beans.post.ImageOutputBean;
 import com.top.lib.beans.post.PostBean;
@@ -45,7 +46,6 @@ import com.top.lib.post.vote.DownvoteaThought;
 import com.top.lib.post.vote.UnDownvoteaThought;
 import com.top.lib.post.vote.UnUpvoteaThought;
 import com.top.lib.post.vote.UpvoteaThought;
-import com.top.service.rest.verifyToken.VerifyToken;
 
 import io.jsonwebtoken.Claims;
 
