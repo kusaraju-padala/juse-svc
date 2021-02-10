@@ -20,7 +20,7 @@ import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
 import com.top.lib.post.test.TestKG;
 
-@Path("/toptest")
+@Path("/test")
 public class TestService {
 
 	@GET

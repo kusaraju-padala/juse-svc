@@ -49,7 +49,7 @@ import com.top.lib.post.vote.UpvoteaThought;
 
 import io.jsonwebtoken.Claims;
 
-@Path("/rest")
+@Path("/in")
 public class TopService {
 
 	private static final Logger logger = LogManager.getLogger(TopService.class);

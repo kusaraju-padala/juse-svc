@@ -16,7 +16,7 @@ import com.top.lib.post.user.UserActivity;
 import io.jsonwebtoken.Claims;
 
 
-@Path("/useractivity")
+@Path("/user")
 public class TopUserActivity {
 	
 	@POST

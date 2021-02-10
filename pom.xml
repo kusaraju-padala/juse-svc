@@ -85,7 +85,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>juse-svc</finalName>
+		<finalName>jusenews</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>

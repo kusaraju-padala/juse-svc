@@ -7,10 +7,10 @@
 	http://java.sun.com/xml/ns/j2ee/webapp_3_0.xsd">
 	<display-name>Juse</display-name>
 
-	<context-param>
+	<!-- <context-param>
 		<param-name>resteasy.scan</param-name>
 		<param-value>false</param-value>
-	</context-param>
+	</context-param> -->
 
 	<servlet>
 		<servlet-name>resteasy-servlet</servlet-name>

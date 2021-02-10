@@ -35,7 +35,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
-@Path("/topinit")
+@Path("/init")
 public class TopLoginService {
 	
 	private static Key key = new SecretKeySpec(System.getenv("SECRET_KEY").getBytes(),(SignatureAlgorithm.HS384).getJcaName());
