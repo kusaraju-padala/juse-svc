@@ -67,7 +67,7 @@ public class TopService {
 	public static final String POST_TYPE_WIDE = "wide";
 	public static final String POST_TYPE_FULL = "full";
 	public static final String POST_TYPE_POLL = "poll";
-	
+
 	public static final String DEFAULT_THOUGHT_SOURCE_FORMAT = "default";
 
 	@SuppressWarnings("serial")
@@ -198,8 +198,9 @@ public class TopService {
 				thought.setObjectids(
 						(new String(getBytesFromMultipartMap(map, "objectids"), StandardCharsets.UTF_8)).split(","));
 			}
-			if(null != getBytesFromMultipartMap(map, "sourceFormat"))
-				thought.setSourceFormat(new String(getBytesFromMultipartMap(map, "sourceFormat"), StandardCharsets.UTF_8));
+			if (null != getBytesFromMultipartMap(map, "sourceFormat"))
+				thought.setSourceFormat(
+						new String(getBytesFromMultipartMap(map, "sourceFormat"), StandardCharsets.UTF_8));
 			else
 				thought.setSourceFormat(DEFAULT_THOUGHT_SOURCE_FORMAT);
 			thought.setPostId(Integer.parseInt(new String(getBytesFromMultipartMap(map, "postid"))));
@@ -248,9 +249,10 @@ public class TopService {
 				thought.setId(Integer
 						.parseInt(new String(getBytesFromMultipartMap(map, "thoughtid"), StandardCharsets.UTF_8)));
 			}
-			if(null != getBytesFromMultipartMap(map, "sourceFormat"))
-				thought.setSourceFormat(new String(getBytesFromMultipartMap(map, "sourceFormat"), StandardCharsets.UTF_8));
-			
+			if (null != getBytesFromMultipartMap(map, "sourceFormat"))
+				thought.setSourceFormat(
+						new String(getBytesFromMultipartMap(map, "sourceFormat"), StandardCharsets.UTF_8));
+
 			thought.setPostId(Integer.parseInt(new String(getBytesFromMultipartMap(map, "postid"))));
 			byte[] fullcontent = getBytesFromMultipartMap(map, "fullcontent");
 			if (fullcontent != null) {
@@ -281,9 +283,20 @@ public class TopService {
 			Map<String, List<InputPart>> map = multipartFormDataInput.getFormDataMap();
 
 			ThoughtBean thought = new ThoughtBean();
-			thought.setId(
-					Integer.parseInt((new String(getBytesFromMultipartMap(map, "thoughtid"), StandardCharsets.UTF_8))));
-
+			
+			if (null != getBytesFromMultipartMap(map, "thoughtid"))
+				thought.setId(
+						Integer.parseInt((new String(getBytesFromMultipartMap(map, "thoughtid"), StandardCharsets.UTF_8))));
+			else {
+				throw new Exception("Thought id is null please provide post id");
+			}
+			
+			if (null != getBytesFromMultipartMap(map, "postid"))
+				thought.setPostId(Integer
+						.parseInt((new String(getBytesFromMultipartMap(map, "postid"), StandardCharsets.UTF_8))));
+			else {
+				throw new Exception("Post id is null please provide post id");
+			}
 			thought.setUserId((Integer) (claims.get("id")));
 			response.setKey(new DeleteThought().deleteThought(thought));
 			response.setCode(0);
