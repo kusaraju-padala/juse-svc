@@ -291,12 +291,12 @@ public class TopService {
 				throw new Exception("Thought id is null please provide post id");
 			}
 			
-			if (null != getBytesFromMultipartMap(map, "postid"))
-				thought.setPostId(Integer
-						.parseInt((new String(getBytesFromMultipartMap(map, "postid"), StandardCharsets.UTF_8))));
-			else {
-				throw new Exception("Post id is null please provide post id");
-			}
+//			if (null != getBytesFromMultipartMap(map, "postid"))
+//				thought.setPostId(Integer
+//						.parseInt((new String(getBytesFromMultipartMap(map, "postid"), StandardCharsets.UTF_8))));
+//			else {
+//				throw new Exception("Post id is null please provide post id");
+//			}
 			thought.setUserId((Integer) (claims.get("id")));
 			response.setKey(new DeleteThought().deleteThought(thought));
 			response.setCode(0);
