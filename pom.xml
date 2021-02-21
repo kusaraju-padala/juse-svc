@@ -6,7 +6,7 @@
 	<artifactId>juse-svc</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>juse-svc</name>
+	<name>juse</name>
 	<url>http://maven.apache.org</url>
 
 	<repositories>
@@ -85,7 +85,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>jusenews</finalName>
+		<finalName>juse</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
