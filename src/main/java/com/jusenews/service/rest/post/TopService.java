@@ -32,16 +32,12 @@ import com.top.lib.beans.generic.InsertResponseBean;
 import com.top.lib.beans.post.ImageOutputBean;
 import com.top.lib.beans.post.PostBean;
 import com.top.lib.beans.thought.ThoughtBean;
-import com.top.lib.beans.thought.comment.CommentBean;
-import com.top.lib.beans.user.FollowBean;
 import com.top.lib.beans.vote.ThoughtVoteBean;
 import com.top.lib.post.image.ImageProcess;
 import com.top.lib.post.post.AddPost;
 import com.top.lib.post.thought.AddThought;
 import com.top.lib.post.thought.DeleteThought;
 import com.top.lib.post.thought.UpdateThought;
-import com.top.lib.post.thought.comment.AddComment;
-import com.top.lib.post.user.Follow;
 import com.top.lib.post.vote.DownvoteaThought;
 import com.top.lib.post.vote.UnDownvoteaThought;
 import com.top.lib.post.vote.UnUpvoteaThought;
@@ -307,32 +303,8 @@ public class TopService {
 			response.setMessage("Something went wrong please try agian after sometime");
 		}
 		return Response.ok(response).build();
-
 	}
 
-	@POST
-	@VerifyToken
-	@Path("/addcomment")
-	@Consumes("application/json")
-	@Produces("application/json")
-	public Response addComment(String rawComment) {
-		Claims claims = ResteasyProviderFactory.popContextData(Claims.class);
-
-		InsertResponseBean response = new InsertResponseBean();
-		try {
-			CommentBean comment = new Gson().fromJson(rawComment, CommentBean.class);
-			comment.setUserId((Integer) (claims.get("id")));
-			response.setKey(new AddComment().addComment(comment));
-			response.setCode(0);
-			response.setMessage("Successfully added Comment");
-		} catch (Exception e) {
-			e.printStackTrace();
-			response.setCode(-1);
-			response.setMessage("Something went wrong please try agian after sometime");
-		}
-		return Response.ok(response).build();
-
-	}
 
 	@VerifyToken
 	@POST
@@ -422,28 +394,7 @@ public class TopService {
 		return Response.ok(response).build();
 	}
 
-	@POST
-	@VerifyToken
-	@Path("/follow/{followeeid}")
-	@Consumes("application/json")
-	@Produces("application/json")
-	public Response follow(@PathParam("followeeid") Integer followeeId) {
-		InsertResponseBean response = new InsertResponseBean();
-		FollowBean fb = new FollowBean();
-		fb.setFollowee(followeeId);
-		fb.setFollower((Integer) ResteasyProviderFactory.popContextData(Claims.class).get("id"));
-		try {
-			response.setKey(new Follow().follow(fb));
-			response.setCode(0);
-			response.setMessage("Successfully upvoted");
-		} catch (Exception e) {
-			e.printStackTrace();
-			response.setCode(-1);
-			response.setMessage("Something went wrong please try agian after sometime");
-		}
-		return Response.ok(response).build();
-	}
-
+	
 	// Krishna
 	// This is looking good, looking forward to proceed, bless yourself
 
