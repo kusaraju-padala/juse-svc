@@ -26,7 +26,6 @@ import org.jboss.resteasy.plugins.providers.multipart.InputPart;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 import org.jboss.resteasy.spi.ResteasyProviderFactory;
 
-import com.google.gson.Gson;
 import com.jusenews.service.rest.verifyToken.VerifyToken;
 import com.top.lib.beans.generic.InsertResponseBean;
 import com.top.lib.beans.post.ImageOutputBean;
@@ -52,16 +51,23 @@ public class TopService {
 
 	private static final String UPLOAD_IMAGE_KEY = "image";
 	private static final String UPLOAD_IMAGETYPE_KEY = "imagetype";
-	private static final String UPLOAD_POST_KEY = "data";
+	//private static final String UPLOAD_POST_KEY = "data";
 
-	public static final int THUMBNAIL_WIDTH = 200;
-	public static final int WIDE_IMAGE_WIDTH = 400;
-	public static final int FULL_IMAGE_WIDTH = 400;
-	public static final int TOPIC_IMAGE_WIDTH = 100;
+	private static final String POST_UPLOAD_TAGS_KEY = "topics";
+	private static final String POST_UPLOAD_LANGUAGE_KEY = "languageid";
+	private static final String POST_UPLOAD_POST_TYPE_KEY = "posttype";
+	private static final String POST_UPLOAD_OWNER_ID_KEY = "ownerid";
+	private static final String POST_UPLOAD_SOURCE_KEY = "source";
+
+	public static final int THUMBNAIL_WIDTH = 300;
+	public static final int WIDE_IMAGE_WIDTH = 700;
+	public static final int FULL_IMAGE_WIDTH = 1000;
+	public static final int TOPIC_IMAGE_WIDTH = 200;
 
 	public static final String POST_TYPE_THUMBNAIL = "thumbnail";
-	public static final String POST_TYPE_WIDE = "wide";
-	public static final String POST_TYPE_FULL = "full";
+	public static final String POST_TYPE__HALF_WIDE = "halfwide";
+	public static final String POST_TYPE_FULL = "fullimage";
+	public static final String POST_TYPE_NO_IMAGE = "noimage";
 	public static final String POST_TYPE_POLL = "poll";
 
 	public static final String DEFAULT_THOUGHT_SOURCE_FORMAT = "default";
@@ -70,7 +76,7 @@ public class TopService {
 	public static final Map<String, Integer> WIDTH_MAP = new HashMap<String, Integer>() {
 		{
 			put(POST_TYPE_THUMBNAIL, THUMBNAIL_WIDTH);
-			put(POST_TYPE_WIDE, WIDE_IMAGE_WIDTH);
+			put(POST_TYPE__HALF_WIDE, WIDE_IMAGE_WIDTH);
 			put(POST_TYPE_FULL, FULL_IMAGE_WIDTH);
 		}
 	};
@@ -94,25 +100,24 @@ public class TopService {
 			logger.debug("Size of map" + map.size());
 			byte[] imageBytes = getBytesFromMultipartMap(map, UPLOAD_IMAGE_KEY);
 			String imageType = new String(getBytesFromMultipartMap(map, UPLOAD_IMAGETYPE_KEY));
-			String data = new String(getBytesFromMultipartMap(map, UPLOAD_POST_KEY));
-
-			PostBean post = new Gson().fromJson(data, PostBean.class);
+			// String data = new String(getBytesFromMultipartMap(map, UPLOAD_POST_KEY));
+			PostBean post = new PostBean();
+			post.setTopics(new String(getBytesFromMultipartMap(map, POST_UPLOAD_TAGS_KEY)));
+			post.setPostType(new String(getBytesFromMultipartMap(map, POST_UPLOAD_POST_TYPE_KEY)));
+			post.setLanguageId(Integer.parseInt(new String(getBytesFromMultipartMap(map, POST_UPLOAD_LANGUAGE_KEY))));
+			post.setOwnerId(Integer.parseInt(new String(getBytesFromMultipartMap(map, POST_UPLOAD_OWNER_ID_KEY))));
+			post.setSourceUrl(new String(getBytesFromMultipartMap(map, POST_UPLOAD_SOURCE_KEY)));
+			post.setStateId(0);
+			post.setCountryId(1);
 			post.setHeading(
 					(new String(getBytesFromMultipartMap(map, "heading"), StandardCharsets.UTF_8)).replace("'", "''"));
 			byte[] body = getBytesFromMultipartMap(map, "body");
 			if (body != null) {
 				String fullbody = (new String(getBytesFromMultipartMap(map, "body"), StandardCharsets.UTF_8))
 						.replace("'", "''");
-				if (fullbody.length() > 299) {
-					post.setBody(fullbody.substring(0, 299));
-					post.setExpandbody(fullbody);
-					post.setExpandable(true);
-				} else {
-					post.setBody(fullbody);
-					post.setExpandable(false);
-				}
-
+				post.setBody(fullbody);
 			}
+
 			ImageOutputBean img = new ImageProcess().addImage(imageBytes, imageType, post.getOwnerId(),
 					getWidth(post.getPostType()));
 			post.setImage(img);
@@ -279,14 +284,14 @@ public class TopService {
 			Map<String, List<InputPart>> map = multipartFormDataInput.getFormDataMap();
 
 			ThoughtBean thought = new ThoughtBean();
-			
+
 			if (null != getBytesFromMultipartMap(map, "thoughtid"))
-				thought.setId(
-						Integer.parseInt((new String(getBytesFromMultipartMap(map, "thoughtid"), StandardCharsets.UTF_8))));
+				thought.setId(Integer
+						.parseInt((new String(getBytesFromMultipartMap(map, "thoughtid"), StandardCharsets.UTF_8))));
 			else {
 				throw new Exception("Thought id is null please provide post id");
 			}
-			
+
 //			if (null != getBytesFromMultipartMap(map, "postid"))
 //				thought.setPostId(Integer
 //						.parseInt((new String(getBytesFromMultipartMap(map, "postid"), StandardCharsets.UTF_8))));
@@ -304,7 +309,6 @@ public class TopService {
 		}
 		return Response.ok(response).build();
 	}
-
 
 	@VerifyToken
 	@POST
@@ -394,7 +398,6 @@ public class TopService {
 		return Response.ok(response).build();
 	}
 
-	
 	// Krishna
 	// This is looking good, looking forward to proceed, bless yourself
 
