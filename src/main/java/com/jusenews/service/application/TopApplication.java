@@ -26,6 +26,8 @@ public class TopApplication extends Application {
 		corsFilter.getAllowedOrigins().add("*");
         corsFilter.setAllowedMethods("OPTIONS, GET, POST, DELETE, PUT, PATCH");
 		
+        corsFilter.setAllowCredentials(true);
+        corsFilter.setCorsMaxAge(200);
         singletons.add(corsFilter);
 		singletons.add(new TopService());
 		singletons.add(new TopLoginService());
