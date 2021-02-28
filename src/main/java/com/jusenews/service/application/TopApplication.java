@@ -16,31 +16,25 @@ import com.jusenews.service.rest.verifyToken.VerifyTokenFilter;
 
 @ApplicationPath("/")
 public class TopApplication extends Application {
-	
+
 	private Set<Object> singletons = new HashSet<Object>();
-	
-	public TopApplication() {
-		
+
+	@Override
+	public Set<Object> getSingletons() {
 		CorsFilter corsFilter = new CorsFilter();
-		
+
 		corsFilter.getAllowedOrigins().add("*");
-        corsFilter.setAllowedMethods("OPTIONS, GET, POST, DELETE, PUT, PATCH");
-		
-        corsFilter.setAllowCredentials(true);
-        corsFilter.setCorsMaxAge(200);
-        singletons.add(corsFilter);
+		corsFilter.setAllowedMethods("OPTIONS, GET, POST, DELETE, PUT, PATCH");
+
+		corsFilter.setAllowCredentials(true);
+		corsFilter.setCorsMaxAge(200);
+		singletons.add(corsFilter);
 		singletons.add(new TopService());
 		singletons.add(new TopLoginService());
 		singletons.add(new VerifyTokenFilter());
 		singletons.add(new TestService());
 		singletons.add(new TopUserActivity());
-		
-	}
-	
-	@Override
-	public Set<Object> getSingletons() {
 		return singletons;
 	}
-	
 
 }
