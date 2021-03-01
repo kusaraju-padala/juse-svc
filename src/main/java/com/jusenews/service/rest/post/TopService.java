@@ -14,6 +14,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
@@ -41,6 +42,7 @@ import com.top.lib.post.vote.DownvoteaThought;
 import com.top.lib.post.vote.UnDownvoteaThought;
 import com.top.lib.post.vote.UnUpvoteaThought;
 import com.top.lib.post.vote.UpvoteaThought;
+import com.top.lib.post.vote.VoteAThought;
 
 import io.jsonwebtoken.Claims;
 
@@ -314,6 +316,32 @@ public class TopService {
 		return Response.ok(response).build();
 	}
 
+	@VerifyToken
+	@POST
+	@Path("/voteathought/{thoughtid}")
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Response voteaThought(@QueryParam("upvotes") Integer upvotes,@QueryParam("downvotes") Integer downvotes,@PathParam("thoughtid") Integer thoughtId) {
+		InsertResponseBean response = new InsertResponseBean();
+		ThoughtVoteBean tvb = new ThoughtVoteBean();
+		tvb.setThoughtId(thoughtId);
+		Integer adminId = (Integer) ResteasyProviderFactory.popContextData(Claims.class).get("id");
+		if(adminId != 0) {
+			return Response.status(403).entity("Authorization required").build();
+		}
+//		tvb.setUserId((Integer) ResteasyProviderFactory.popContextData(Claims.class).get("id"));
+		try {
+			response.setKey(new VoteAThought().voteAThought(tvb,upvotes,downvotes));
+			response.setCode(0);
+			response.setMessage("Successfully updated votes");
+		} catch (Exception e) {
+			e.printStackTrace();
+			response.setCode(-1);
+			response.setMessage("Something went wrong please try agian after sometime");
+		}
+		return Response.ok(response).build();
+	}
+	
 	@VerifyToken
 	@POST
 	@Path("/upvoteathought/{thoughtid}")
