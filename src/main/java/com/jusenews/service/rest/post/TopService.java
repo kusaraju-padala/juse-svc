@@ -59,9 +59,9 @@ public class TopService {
 	private static final String POST_UPLOAD_OWNER_ID_KEY = "ownerid";
 	private static final String POST_UPLOAD_SOURCE_KEY = "source";
 
-	public static final int THUMBNAIL_WIDTH = 300;
-	public static final int WIDE_IMAGE_WIDTH = 700;
-	public static final int FULL_IMAGE_WIDTH = 1000;
+	public static final int THUMBNAIL_WIDTH = 200;
+	public static final int WIDE_IMAGE_WIDTH = 400;
+	public static final int FULL_IMAGE_WIDTH = 600;
 	public static final int TOPIC_IMAGE_WIDTH = 200;
 
 	public static final String POST_TYPE_THUMBNAIL = "thumbnail";
@@ -98,8 +98,8 @@ public class TopService {
 
 			Map<String, List<InputPart>> map = multipartFormDataInput.getFormDataMap();
 			logger.debug("Size of map" + map.size());
-			byte[] imageBytes = getBytesFromMultipartMap(map, UPLOAD_IMAGE_KEY);
-			String imageType = new String(getBytesFromMultipartMap(map, UPLOAD_IMAGETYPE_KEY));
+			
+			
 			// String data = new String(getBytesFromMultipartMap(map, UPLOAD_POST_KEY));
 			PostBean post = new PostBean();
 			post.setTopics(new String(getBytesFromMultipartMap(map, POST_UPLOAD_TAGS_KEY)));
@@ -117,10 +117,14 @@ public class TopService {
 						.replace("'", "''");
 				post.setBody(fullbody);
 			}
-
-			ImageOutputBean img = new ImageProcess().addImage(imageBytes, imageType, post.getOwnerId(),
-					getWidth(post.getPostType()));
-			post.setImage(img);
+			if(!post.getPostType().equalsIgnoreCase("noimage")) {
+				String imageType = new String(getBytesFromMultipartMap(map, UPLOAD_IMAGETYPE_KEY));
+				byte[] imageBytes = getBytesFromMultipartMap(map, UPLOAD_IMAGE_KEY);
+				ImageOutputBean img = new ImageProcess().addImage(imageBytes, imageType, post.getOwnerId(),
+						getWidth(post.getPostType()));
+				post.setImage(img);
+			}
+			
 			response.setKey(new AddPost().addPost(post));
 			response.setCode(0);
 			response.setMessage("Successfully added post");
