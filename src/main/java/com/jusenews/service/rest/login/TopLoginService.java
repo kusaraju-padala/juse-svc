@@ -169,5 +169,11 @@ public class TopLoginService {
 				.setExpiration(new Date(System.currentTimeMillis()+31104000000L))
 				.signWith(SignatureAlgorithm.HS384, key).compact();
 	}
+	
+	public static void main(String[] args) {
+		TopLoginService tls = new TopLoginService();
+		System.out.println(tls.issueToken(tls.getClaims(null, 0L)));
+		
+	}
 
 }

@@ -205,9 +205,9 @@ public class TopService {
 				thought.setObjectids(
 						(new String(getBytesFromMultipartMap(map, "objectids"), StandardCharsets.UTF_8)).split(","));
 			}
-			if (null != getBytesFromMultipartMap(map, "sourceFormat"))
+			if (null != getBytesFromMultipartMap(map, "sourceformat"))
 				thought.setSourceFormat(
-						new String(getBytesFromMultipartMap(map, "sourceFormat"), StandardCharsets.UTF_8));
+						new String(getBytesFromMultipartMap(map, "sourceformat"), StandardCharsets.UTF_8));
 			else
 				thought.setSourceFormat(DEFAULT_THOUGHT_SOURCE_FORMAT);
 			thought.setPostId(Integer.parseInt(new String(getBytesFromMultipartMap(map, "postid"))));
