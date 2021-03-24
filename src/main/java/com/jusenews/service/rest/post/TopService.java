@@ -260,7 +260,7 @@ public class TopService {
 				thought.setSourceFormat(
 						new String(getBytesFromMultipartMap(map, "sourceFormat"), StandardCharsets.UTF_8));
 
-			thought.setPostId(Integer.parseInt(new String(getBytesFromMultipartMap(map, "postid"))));
+			//thought.setPostId(Integer.parseInt(new String(getBytesFromMultipartMap(map, "postid"))));
 			byte[] fullcontent = getBytesFromMultipartMap(map, "fullcontent");
 			if (fullcontent != null) {
 				thought.setFullcontent((new String(fullcontent, StandardCharsets.UTF_8)).replace("'", "''"));
