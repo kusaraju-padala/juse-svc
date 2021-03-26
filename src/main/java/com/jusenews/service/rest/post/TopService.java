@@ -61,9 +61,9 @@ public class TopService {
 	private static final String POST_UPLOAD_OWNER_ID_KEY = "ownerid";
 	private static final String POST_UPLOAD_SOURCE_KEY = "source";
 
-	public static final int THUMBNAIL_WIDTH = 200;
-	public static final int WIDE_IMAGE_WIDTH = 400;
-	public static final int FULL_IMAGE_WIDTH = 600;
+	public static final int THUMBNAIL_WIDTH = 108;
+	public static final int WIDE_IMAGE_WIDTH = 216;
+	public static final int FULL_IMAGE_WIDTH = 540;
 	public static final int TOPIC_IMAGE_WIDTH = 200;
 
 	public static final String POST_TYPE_THUMBNAIL = "thumbnail";
