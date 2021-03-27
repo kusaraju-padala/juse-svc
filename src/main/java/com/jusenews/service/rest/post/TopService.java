@@ -153,7 +153,7 @@ public class TopService {
 
 			byte[] imageBytes = getBytesFromMultipartMap(map, UPLOAD_IMAGE_KEY);
 			String imageType = new String(getBytesFromMultipartMap(map, UPLOAD_IMAGETYPE_KEY));
-			ImageOutputBean img = new ImageProcess().addImage(imageBytes, imageType, 100000, WIDE_IMAGE_WIDTH);
+			ImageOutputBean img = new ImageProcess().addImage(imageBytes, imageType, 100000, FULL_IMAGE_WIDTH);
 
 			return Response.ok(img).build();
 		} catch (Exception e) {
