@@ -61,10 +61,10 @@ public class TopService {
 	private static final String POST_UPLOAD_OWNER_ID_KEY = "ownerid";
 	private static final String POST_UPLOAD_SOURCE_KEY = "source";
 
-	public static final int THUMBNAIL_WIDTH = 108;
+	public static final int THUMBNAIL_WIDTH = 144;
 	public static final int WIDE_IMAGE_WIDTH = 216;
 	public static final int FULL_IMAGE_WIDTH = 540;
-	public static final int TOPIC_IMAGE_WIDTH = 200;
+	public static final int TOPIC_IMAGE_WIDTH = 50;
 
 	public static final String POST_TYPE_THUMBNAIL = "thumbnail";
 	public static final String POST_TYPE__HALF_WIDE = "halfwide";
@@ -152,7 +152,7 @@ public class TopService {
 			Map<String, List<InputPart>> map = multipartFormDataInput.getFormDataMap();
 
 			byte[] imageBytes = getBytesFromMultipartMap(map, UPLOAD_IMAGE_KEY);
-			String imageType = new String(getBytesFromMultipartMap(map, UPLOAD_IMAGETYPE_KEY));
+			String imageType = "png";
 			ImageOutputBean img = new ImageProcess().addImage(imageBytes, imageType, 100000, FULL_IMAGE_WIDTH);
 
 			return Response.ok(img).build();
