@@ -6,6 +6,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
@@ -20,7 +21,7 @@ public class TopUserActivity {
 	@POST
 	@VerifyToken
 	@Path("/feedback")
-	@Consumes("application/json")
+	@Consumes(MediaType.MULTIPART_FORM_DATA)
 	@Produces("application/json")
 	public Response giveFeedback(MultipartFormDataInput multipartFormDataInput, @Context HttpHeaders headers){
 		InsertResponseBean response = new InsertResponseBean();
