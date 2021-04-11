@@ -8,6 +8,7 @@ import javax.ws.rs.core.Application;
 
 import org.jboss.resteasy.plugins.interceptors.CorsFilter;
 
+import com.jusenews.service.rest.admin.AdminService;
 import com.jusenews.service.rest.login.TopLoginService;
 import com.jusenews.service.rest.post.TopService;
 import com.jusenews.service.rest.post.test.TestService;
@@ -34,6 +35,7 @@ public class TopApplication extends Application {
 		singletons.add(new VerifyTokenFilter());
 		singletons.add(new TestService());
 		singletons.add(new TopUserActivity());
+		singletons.add(new AdminService());
 		return singletons;
 	}
 
