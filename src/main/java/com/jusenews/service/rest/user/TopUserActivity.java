@@ -21,6 +21,7 @@ import org.jboss.resteasy.spi.ResteasyProviderFactory;
 import com.jusenews.service.rest.verifyToken.VerifyToken;
 import com.top.lib.beans.generic.InsertResponseBean;
 import com.top.lib.beans.user.FeedBackBean;
+import com.top.lib.post.user.PostFeedback;
 
 import io.jsonwebtoken.Claims;
 
@@ -41,8 +42,9 @@ public class TopUserActivity {
 			feedback.setScore(Integer.parseInt(new String(getBytesFromMultipartMap(map, "score"))));
 			Claims claims = ResteasyProviderFactory.popContextData(Claims.class);
 			feedback.setUserId((Integer) (claims.get("id")));
-			feedback.setFeedback(new String(getBytesFromMultipartMap(map, "feedback")));
-			response.setKey(1L);
+			if(null != getBytesFromMultipartMap(map, "feedback"))
+				feedback.setFeedback(new String(getBytesFromMultipartMap(map, "feedback")));
+			response.setKey(new PostFeedback().postFeedback(feedback));
 			response.setCode(0);
 			response.setMessage("Successfully updated feedback");
 		}catch(Exception e) {
